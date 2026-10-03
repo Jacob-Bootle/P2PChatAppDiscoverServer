@@ -12,10 +12,9 @@ clients = {}
 async def handler(websocket):
     try:
         async for raw_message in websocket:
-            print(raw_message)
+            print(f"New message: {raw_message}")
             message = json.loads(raw_message)
             message_type = message.get("type")
-            print(message_type == "list")
             response = {"type": "error", "message": "Unknown message type"}
             if message_type == "join":
                 name = message.get("name")
